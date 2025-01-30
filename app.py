@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
-import time  # Для имитации долгих запросов
+from database import get_db_connection  # Подключаем функцию для работы с базой данных
 
-app = Flask(__name__)
+app = Flask(__name__)  # Объект приложения должен быть инициализирован до использования маршрутов
 
 
 @app.route('/')
@@ -17,17 +17,28 @@ def contacts():
 @app.route('/form', methods=['GET', 'POST'])
 def form():
     if request.method == 'POST':
-        # Получаем данные формы
         query = request.form['query']
         category = request.form['category']
 
-        # Здесь имитируем поиск (например, подключение к API или парсеру)
-        time.sleep(2)  # Имитация долгого запроса
+        # Имитация долгого запроса (например, работа с парсером или API)
+        time.sleep(2)  # Можно заменить на реальную обработку данных
 
-        # Переходим на страницу результатов с переданными данными
         return render_template('results.html', query=query, category=category)
 
     return render_template('form.html', title="Форма для ввода данных")
+
+
+@app.route('/results', methods=['GET', 'POST'])
+def results():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+
+    cursor.execute('SELECT * FROM vacancies')
+    vacancies = cursor.fetchall()
+
+    conn.close()
+
+    return render_template('results.html', vacancies=vacancies)
 
 
 if __name__ == "__main__":
