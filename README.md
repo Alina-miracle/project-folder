@@ -1,14 +1,19 @@
-# Flask Search Application
+# 🔍 Flask Search Application  
 
-This is a Flask-based web application that allows users to search for information. It integrates a scraper for fetching data from external websites.
+### 📌 Описание  
+Это веб-приложение на Flask, которое позволяет пользователям выполнять поиск информации через API.  
 
-## Features
-- Home page
-- Contact page
-- Search form to submit queries
-- Results page displaying fetched data
+## 🚀 Функции:
+- 📌 Главная страница
+- 📞 Страница с контактами
+- 🔍 Форма поиска
+- 📊 Страница с результатами поиска
+- 🔒 Авторизация пользователей (если добавлено)
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/project-folder.git
+---
+
+## 🔧 Установка и запуск:
+### 1️⃣ Клонируем репозиторий:
+```sh
+git clone https://github.com/Alina-miracle/project-folder.git
+cd project-folder
